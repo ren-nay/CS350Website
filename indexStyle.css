@@ -1,0 +1,54 @@
+body {
+    background-color: #e0fbef;
+    font-family: 'Trebuchet MS', sans-serif;
+    justify-content: center;
+
+}
+
+header, footer, td {
+    background-color: white;
+    text-align: center;
+}
+
+h1 {
+    color: #8cf0c4;
+    text-align: center;
+    font-size: 40pt;
+}
+
+.intro {
+    margin-left: 30%;
+    width: 50%;
+}
+
+aside {
+    width: 50%;
+    float: left;
+}
+
+blockquote, thead th, tbody th {background-color: #8cf0c4;}
+
+table, th, td {border: none;}
+
+.table {
+    display: table;
+    border-spacing: 20px;
+}
+.caption {
+    display: table-caption;
+    font-size: xx-large;
+    text-align: center;
+}
+.row {display: table-row;}
+.row > * {
+    display: table-cell;
+    text-align: center;
+}
+
+.endForm {
+    background-color: #8cf0c4;
+}
+
+#reCommentBtn{
+    display: none;
+}
