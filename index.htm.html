@@ -9,6 +9,24 @@
     <title>Renee Davis</title>
     <link rel="stylesheet" href="indexStyle.css">
     <script>
+        function validatePhone(number){
+            var regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            if(number.value.match(regex)){
+                return true;
+            } else {
+                alert("Please enter valid phone number.");
+                return false;
+            }
+        }
+        function validateEmail(address){
+            var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if(address.value.match(regex)){
+                return true;
+            } else {
+                alert("Please enter valid email address.");
+                return false;
+            }
+        }
         function validateForm(form, button){
             if(form.elements["name"].value == ""){
                 alert("Please enter your name.");
@@ -21,10 +39,14 @@
             if(form.elements["phone"].value == ""){
                 alert("Please enter your phone number.");
                 return false;
+            } else {
+                validatePhone(form.elements["phone"]);
             }
             if(form.elements["email"].value == ""){
                 alert("Please enter your email.");
                 return false;
+            } else {
+                validateEmail(form.elements["email"]);
             }
             if(form.elements["comment"].value == ""){
                 alert("Please enter your comments.");
