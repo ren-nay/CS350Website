@@ -2,12 +2,32 @@ body {
     background-color: #e0fbef;
     font-family: 'Trebuchet MS', sans-serif;
     justify-content: center;
-
+    margin: 0;
 }
 
 header, footer, td {
     background-color: white;
     text-align: center;
+    width: 100%;
+}
+footer{
+    padding-bottom: 10px;
+    position: absolute;
+
+    bottom: 0;
+}
+
+button, input[type=button], input[type=reset] {
+    background-color:#e0fbef;
+    border-color:#8cf0c4;
+    font-family:'Trebuchet MS', sans-serif;
+    padding: 5px;
+    margin: 5px;
+}
+.headerButtons {
+    display: table-cell;
+    text-align: center;
+    margin: 10px;
 }
 
 h1 {
