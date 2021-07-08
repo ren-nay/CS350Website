@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Renee Davis">
+        <meta name="description" content="Assignment 2: Additional Features">
+        <title>Renee Davis</title>
+        <link rel="stylesheet" href="indexStyle.css">
+        <script type="text/javascript" src="siteScript.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>renee davis</h1>
+            <pre>computer science and animation student</pre>
+            <div>
+                <a href="index.htm.html"><button class="headerButtons">home</button></a>
+                <a href="games.html"><button class="headerButtons">games</button></a>
+            </div>
+            <hr>
+        </header>
+        <article>
+            <h2>Shape Transformation Game</h2>
+            <button id="shapePlayButton" onclick="revealShapeGame(document.getElementById('shapePlayButton'), document.getElementById('shapeCanvas'), document.getElementById('shapeInstructions'))">Start Game!</button>
+            <h3 id="shapeInstructions"></h3>
+            <canvas id="shapeCanvas" height = 0 width = 0 onclick="playShapeGame(event)">Sorry - This page uses <code>canvas</code> and your browser doesn't support it.</canvas>
+        </article>
+        <footer>
+            <br>
+            <address>
+           --- Linkedin <a href="https://linkedin.com/in/reneedavisa">@reneedavisa</a>
+            --- Instagram<a href="https://www.instagram.com/color_falls/">@color_falls</a>
+             ---  Github <a href="https://github.com/rennay">@rennay</a> ---
+           </address>
+        </footer>
+    </body>
+</html>
