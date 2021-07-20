@@ -62,9 +62,9 @@ function revealForm(form, button){
     window.scrollTo(0,document.body.scrollHeight);
 }
 
-var shapeArray = [];
-var stopped = false;
-var magicTransform;
+let shapeArray = [];
+let stopped = false;
+let magicTransform;
 
 function revealShapeGame(button, canvas, instructions){
     var ctx = canvas.getContext("2d");
