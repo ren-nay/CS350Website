@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lange="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Renee Davis">
+    <meta name="description" content="Assignment 2: Additional Features">
+    <title>Renee Davis</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <script language="JavaScript" type="text/javascript" src="./javascripts/siteScript.js"></script>
+</head>
+<body>
+    <header>
+        <h1>renee davis</h1>
+        <pre>computer science and animation student</pre>
+        <div>
+            <a href="/"><button class="headerButtons">home</button></a>
+            <a href="/games"><button class="headerButtons">games</button></a>
+            <a href="/feedback"><button class = "headerButtons">feedback</button></a>
+        </div>
+        <hr>
+    </header>
+    <div class="endForm">
+        <h2 id="thankMsg"></h2>
+        <h4 id="youMsg"></h4>
+        <form id="commentForm" method='POST' action="/feedback" onsubmit="sendEmail(event);">
+            <h3>Have some feedback? Let me know!</h3>
+            Name:
+            <input type="text" id="name" name="name" size="30"><br>
+            Address:
+            <input type="text" id="address" name="address" size="50"><br>
+            Phone:
+            <input type="tel" id="phone" name="phone" placeholder='XXX-XXX-XXXX' size="15" maxlength="15"><br>
+            Email:
+            <input type="email" id="email" name="email" placeholder='youremail@example.com'size="50"><br>
+            Site Rating:
+            <input type="range" name="rating" min="0" max="5" list="stars">
+            <datalist id="stars">
+                <option value="0" label="0 stars"></option>
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+                <option value="5" label="5 stars"></option>
+            </datalist><br>
+            Comments:
+            <textarea id="comment" name="comment" form="commentForm" placeholder="Write comments here!"></textarea>
+            <br><br>
+            <input type="reset" value="Reset">
+            <input type="button" value="Send Feedback" onclick="validateForm(this.form, document.getElementById('reCommentBtn'));">
+        </form>
+        <button type="button" id="reCommentBtn" onclick="revealForm(document.getElementById('commentForm'), document.getElementById('reCommentBtn'));">Click Here to Comment More!</button>
+    </div>
+    <footer>
+        <br>
+        <address>
+       --- Linkedin <a href="https://linkedin.com/in/reneedavisa">@reneedavisa</a>
+        --- Instagram<a href="https://www.instagram.com/color_falls/">@color_falls</a>
+         ---  Github <a href="https://github.com/rennay">@rennay</a> ---
+       </address>
+    </footer>
+</body>
+</html>

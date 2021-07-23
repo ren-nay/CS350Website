@@ -1,0 +1,142 @@
+extends layout
+
+block content
+  article
+    aside
+      figure
+        img(src='/images/profilePic.jpg' alt='Renee in a bright yellow hoodie' style='width:40%')
+    section.intro
+      h2 About Me
+      p
+        strong Hey I&apos;m Renee!
+        |                 I&apos;m a university junior studying computer science and
+        |                 animation at SIU Carbondale. My favorite colors are:
+      ul
+        li Green
+        li Yellow
+        li Orange
+        li Blue
+      p
+        | I&apos;m enamored with the visual and graphical applications of
+        | programming, like generative art, simulations, virtual
+        | reality, or visual effects. That&apos;s why I am working
+        | towards a dual degree in computer science and in radio,
+        | television, &amp; digital media.
+    br
+    br
+    section
+      table
+        caption My Weekday Schedule
+        thead
+          tr
+            th Day/Time
+            th 6AM-8AM
+            th 8AM-10AM
+            th 10AM-12PM
+            th 12PM-2PM
+            th 2PM-4PM
+            th 4PM-6PM
+            th 6PM-8PM
+            th 8PM-10PM
+            th 10PM-12AM
+            th 12AM-2AM
+        tbody
+          tr
+            th Monday
+            td Wake Up and Eat Breakfast
+            td(colspan='4') Go to Work
+            td Go Home and Eat Dinner
+            td Go Roller Skating
+            td Class Work
+            td Read a Book
+            td Go to Bed
+          tr
+            th Tuesday
+            td(colspan='3') Sleep In
+            td Wake Up and Eat Breakfast
+            td Do Chores
+            td Work on Side Projects
+            td Cook and Eat Dinner
+            td Work on Side Projects
+            td(colspan='2')
+              | Watch Videos
+              | and Go to Bed
+          tr
+            th Wednseday
+            td Wake Up and Eat Breakfast
+            td(colspan='4') Go to Work
+            td Go Home and Eat Dinner
+            td Go Roller Skating
+            td Class Work
+            td Play Video Games
+            td Go to Bed
+          tr
+            th Thursday
+            td Wake Up and Eat Breakfast
+            td(colspan='4') Go to Work
+            td Go Home and Eat Dinner
+            td Bake a Dessert
+            td Class Work
+            td(colspan='2') Go to Bed
+          tr
+            th Friday
+            td Wake Up and Eat Breakfast
+            td(colspan='4') Go to Work
+            td Go Home and Eat Dinner
+            td(colspan='2') Class Work
+            td Play Video Games
+            td Go to Bed
+    section
+      h2 Audio Projects
+      audio(src='/images/SoundCollage_3.mp3' preload='auto' controls='')
+      audio(src='/images/AmbeoPiece.wav' preload='auto' controls='')
+      br
+      h2 Video Projects
+      iframe(height='320' src='https://www.youtube.com/embed/QegeQbCEctQ' title='Object Detection Prototype Demonstration' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+      iframe(height='320' src='https://www.youtube.com/embed/UILYUDOPrUs' title='A Fitting Reward' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+      iframe(height='320' src='https://www.youtube.com/embed/6DLecK3SK08' title='Nanny Cam VR Walkthrough' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+      iframe(height='320' src='https://www.youtube.com/embed/_iPX1hwWNSg' title='CloseUp Project' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+    br
+    section
+      h2 Mottos to Live By:
+      blockquote(cite='https://medium.com/viarium/top-virtual-reality-quotes-d4e57f33347c')
+        | There are as many applications for VR as you can think of, 
+        | it&apos;s restructed by your imagination.
+        br
+        cite John Goddard, HTC Vive
+      blockquote(cite='https://www.thoughtco.com/grace-hopper-quotes-3530092')
+        | We&apos;re flooding people with information. We need to feed it 
+        | through a processor. A human must turn information into 
+        | intelligence or knowledge. We&apos;ve tended to forget that no 
+        | computer will ever ask a new question.
+        br
+        cite Grace Hopper
+      blockquote(cite='https://www.goodreads.com/author/quotes/102372.Bob_Ross')
+        | This is your world. You&apos;re the creator. Find freedom on this
+        | canvas. Believe, that you can do it. &apos;Cuz you can do it. You can do it.   
+        br
+        cite Bob Ross
+    br
+  nav
+    .table
+      .caption
+        h2 Photo Gallery
+      .row
+        span
+          a(href='https://lib.siu.edu/')
+            img(src='/images/flowersMorris.jpg' height='186' title='Flowering Tree Outside Morris Library' alt='Pink flowers with a bee')
+        span
+          a(href='https://www.brimfieldlibrary.org/')
+            img(src='/images/brimfieldDesigns.jpg' height='186' title='Gravity Sketch Demonstration' alt='Girls showing off virtual reality project')
+        span
+          a(href='https://siuf.org/giving/college-unit/lake.php')
+            img(src='/images/lakeTrail.jpg' height='186' title='Notebook and Fall Leaves' alt='Hand with notebook outside fall leaves')
+        span
+          a(href='https://en.wikipedia.org/wiki/Arenzville,_Illinois')
+            img(src='/images/pavlovaCake.jpg' height='186' title='Pavlova Cake' alt='Pavlova cake in the sunshine')
+      .row
+        span SIU Morris Library
+        span Brimfield Public Library
+        span SIU Campus Lake
+        span Arenzville, Illinois
+  

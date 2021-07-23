@@ -1,0 +1,14 @@
+extends layout
+
+block scripts
+    script(src='/javascripts/gameScript.js')
+
+block content
+    article
+        h2 Shape Transformation Game
+        button#shapePlayButton(onclick="revealShapeGame(document.getElementById('shapePlayButton'), document.getElementById('shapeCanvas'), document.getElementById('shapeInstructions'))") Start Game!
+        h3#shapeInstructions
+        canvas#shapeCanvas(height='0' width='0' onclick='playShapeGame(event)')
+            | Sorry - This page uses 
+            code canvas
+            |  and your browser doesn&apos;t support it.
