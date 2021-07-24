@@ -26,13 +26,6 @@ var myEventHandler = function () {
 
 function sendEmail(event){
     event.preventDefault();
-    var form = document.getElementById("commentForm");
-    var name = form.elements["name"].value;
-    var email = form.elements["email"].value;
-    var phone = form.elements["phone"].value;
-    var address = form.elements["address"].value;
-    var comments = form.elements["comments"].value;
-    var rating = form.elements["rating"].value;
 }
 
 function validatePhone(number){

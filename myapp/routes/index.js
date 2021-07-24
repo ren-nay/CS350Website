@@ -76,61 +76,9 @@ router.post('/feedback', [
       if(err) throw err;
     });
   }
+  //res.end();
+  res.writeHead(302, { Location: '/feedback' }).end();
+
 });
-
-/*
-app.get('/feedback', function(req,res){
-  console.log(req.body);
-  res.send("recieved your request!");
-});
-*/
-
-/*
-const express = require('express');
-const { fstat } = require('fs');
-
-app.post('/feedback', (req, res) => {
-  var body = '';
-  var testValidity = false;
-  req.on('data', function(chunk) {
-    body += chunck.toString();
-  });
-  req.on('end', function() {
-    testValidity = ffv.validateForm(body);
-    if(testValidity === true){
-      var ts = Date.now();
-      var parsed = qs.parse(body);
-      fs.appendFile('flatfileDB.txt', convertToString(parsed, ts), function(error) {
-        if (error) {
-          console.log('Error writing to flatfileDB.txt file', error);
-          throw error;
-        }
-        console.log('Wrote to flatfileDB.txt file successfully!');
-      });
-      sendEmail(parsed['email'].ts);
-      res.writeHead(301, {'Content-Type': 'text/plain', Location: '/'});
-      res.end();
-    } else {
-      res.writeHead(301, {'Content-Type': 'text/plain', Location: '/'});
-      res.end(testValidity);
-    }
-  });
-    const name = req.body.name;
-    const address = req.body.address;
-    const phone = req.body.phone;
-    const email = req.body.email;
-    const comments = req.body.comments;
-    res.end();
-});
-
-app.get('/feedbackComment', function (req, res, next) {
-  //validate feeback
-  //send email
-  next()},
-  function (req, res, next){
-    //save form feedback as JSON
-  }
-)
-*/
 
 module.exports = router;
