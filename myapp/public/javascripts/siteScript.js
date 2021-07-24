@@ -27,13 +27,12 @@ var myEventHandler = function () {
 function sendEmail(event){
     event.preventDefault();
     var form = document.getElementById("commentForm");
-    var title;
-    var name;
-    var email;
-    var phone;
-    var address;
-    var comments;
-    var rating;
+    var name = form.elements["name"].value;
+    var email = form.elements["email"].value;
+    var phone = form.elements["phone"].value;
+    var address = form.elements["address"].value;
+    var comments = form.elements["comments"].value;
+    var rating = form.elements["rating"].value;
 }
 
 function validatePhone(number){
@@ -85,6 +84,7 @@ function validateForm(form, button){
         "Thanks for your feedback " + form.elements["name"].value + "!";
     document.getElementById("youMsg").innerHTML= 
         "Come back soon to see how this site improves!";
+    form.submit();
     form.reset();
     form.style.display="none";
     button.style.display="block";
