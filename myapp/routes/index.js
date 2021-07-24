@@ -54,7 +54,7 @@ router.post('/feedback', [
     const comment = req.body.comment;
     const email = req.body.email;
     const rating = req.body.rating;
-    const message = "Hello " + name + "! \n\nThanks for leaving feedback on my website! A copy of your feedback is pasted below for your reference. I hope you'll return soon to see how my site improves! \n\nThank You,\nRenee Davis @ XXXXX \n\n...\n\nSite Rating: " + rating + " out of 5.\n\nYour Comment:\n \"" + comment + "\"\n\n...";
+    const message = "Hello " + name + "! \n\nThanks for leaving feedback on my website! A copy of your feedback is pasted below for your reference. I hope you'll return soon to see how my site improves! \n\nThank You,\nRenee Davis @ https://cs350website.herokuapp.com/ \n\n...\n\nSite Rating: " + rating + " out of 5.\n\nYour Comment:\n \"" + comment + "\"\n\n...";
     var mailOptions = {
       from: 'naenae99rd@gmail.com',
       to: email,
