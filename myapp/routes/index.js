@@ -6,6 +6,8 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 const { check, validationResult } = require('express-validator');
+//var mongo = require('mongodb');
+
 
 var transporter=nodemailer.createTransport({
   service: 'gmail',
@@ -14,6 +16,7 @@ var transporter=nodemailer.createTransport({
     pass: "rd99naenae"
   }
 });
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -69,12 +72,13 @@ router.post('/feedback', [
         console.log('Email sent: ' + info.response);
       }
     });
-
+    /*
     //append entry to JSON file
     const newEntry = JSON.stringify(req.body) + "\r\n";
     fs.appendFile('./feedback.json',newEntry, (err, content) => {
       if(err) throw err;
     });
+    */
   }
   //res.end();
   res.writeHead(302, { Location: '/feedback' }).end();
