@@ -24,15 +24,30 @@ async function run(doc, toAdd) {
       // create a document to be inserted
       //const doc = { name: "tester two", address: "van down by the river", phone: "654-654-5865", email: "garbage@garbage.com", rating: "1", comment: "get good" };
       var feedbackNumber = await feedback.estimatedDocumentCount();
-      feedbackEstimate = ordinal_suffix_of(feedbackNumber);
+      feedbackEstimate = "This is the " + ordinal_suffix_of(feedbackNumber) + " piece of feedback that I've recieved, so come back soon to see how this site improves!";
       if(toAdd){
-        const result = await feedback.insertOne(doc);
-        console.log(
+        //check if previous entry exists
+        const previousFeedback = await feedback.findOne({email: doc.email});
+        if(previousFeedback == null){
+          const result = await feedback.insertOne(doc);
+          console.log(
           `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`,
-        );
+          );
+        } else {
+          console.log("PREVIOUS FEEDBACK ENTRY FOUND!");
+          feedbackEstimate = "Thank you for revisiting my site. Your new feedback has been recorded. Come back soon to see how this site improves!"
+
+          //modify previous entry
+          const result = await feedback.updateOne(
+            {email: doc.email},
+            [{ $set: { comment: { $concat: [ "$comment\n----\n", doc.comment ] } } }],
+          )
+          //edit user statement
+        }
       }
   } finally {
       await client.close();
+      console.log(feedbackEstimate);
   }
 }
 
@@ -109,11 +124,10 @@ router.post('/feedback', [
     //res.send("Hello " + name + ", Thank you for subcribing. You email is " + email);
 
   }
-
-  //res.end();
-  res.render('feedbackresponse', { data: { title: "Feedback Response", username: username, feedbackNumber: feedbackEstimate } });
-
-  res.writeHead(302, { Location: '/feedbackresponse' }).end();
+  setTimeout(() => {   
+    res.render('feedbackresponse', { data: { title: "Feedback Response", username: username, feedbackNumber: feedbackEstimate } });
+    }, 2000);
+  //res.render('feedbackresponse', { data: { title: "Feedback Response", username: username, feedbackNumber: feedbackEstimate } });
 });
 
 function ordinal_suffix_of(i) {
