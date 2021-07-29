@@ -6,17 +6,35 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 const { check, validationResult } = require('express-validator');
-//var mongo = require('mongodb');
+const { MongoClient } = require("mongodb");
+var feedbackEstimate = "5th";
+var username = "User";
 
+const uri =
+  "mongodb+srv://rdav:XmzffORuONFY2oey@cluster0.a3dbe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-var transporter=nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'naenae99rd@gmail.com',
-    pass: "rd99naenae"
+const client = new MongoClient(uri);
+run("",false);
+
+async function run(doc, toAdd) {
+  try {
+      await client.connect();
+      const database = client.db("cs350Website");
+      const feedback = database.collection("userFeedback");
+      // create a document to be inserted
+      //const doc = { name: "tester two", address: "van down by the river", phone: "654-654-5865", email: "garbage@garbage.com", rating: "1", comment: "get good" };
+      var feedbackNumber = await feedback.estimatedDocumentCount();
+      feedbackEstimate = ordinal_suffix_of(feedbackNumber);
+      if(toAdd){
+        const result = await feedback.insertOne(doc);
+        console.log(
+          `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`,
+        );
+      }
+  } finally {
+      await client.close();
   }
-});
-
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -26,6 +44,11 @@ router.get('/', function(req, res, next) {
 /* GET game page. */
 router.get('/games', function(req, res, next) {
   res.render('games', {title: 'Games'});
+});
+
+router.get('/feedbackresponse', function(req, res, next) {
+  res.render('feedbackresponse', {title: 'Feedback Response'});
+  //res.render('feedbackresponse', { data: { title: "Feedback Response", username: username, feedbackNumber: feedbackEstimate } });
 });
 
 /* GET feedback page. */
@@ -53,17 +76,25 @@ router.post('/feedback', [
     return res.status(422).json({errors: errors.array() });
   } else {
     //send email to commenter
-    const name = req.body.name;
+    username = req.body.name;
     const comment = req.body.comment;
     const email = req.body.email;
     const rating = req.body.rating;
-    const message = "Hello " + name + "! \n\nThanks for leaving feedback on my website! A copy of your feedback is pasted below for your reference. I hope you'll return soon to see how my site improves! \n\nThank You,\nRenee Davis @ https://cs350website.herokuapp.com/ \n\n...\n\nSite Rating: " + rating + " out of 5.\n\nYour Comment:\n \"" + comment + "\"\n\n...";
+    const message = "Hello " + username + "! \n\nThanks for leaving feedback on my website! A copy of your feedback is pasted below for your reference. I hope you'll return soon to see how my site improves! \n\nThank You,\nRenee Davis @ https://cs350website.herokuapp.com/ \n\n...\n\nSite Rating: " + rating + " out of 5.\n\nYour Comment:\n \"" + comment + "\"\n\n...";
     var mailOptions = {
       from: 'naenae99rd@gmail.com',
       to: email,
       subject: 'Thanks for the Feedback!',
       text: message
     };
+
+    var transporter=nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'naenae99rd@gmail.com',
+        pass: "rd99naenae"
+      }
+    });
 
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
@@ -72,17 +103,32 @@ router.post('/feedback', [
         console.log('Email sent: ' + info.response);
       }
     });
-    /*
-    //append entry to JSON file
-    const newEntry = JSON.stringify(req.body) + "\r\n";
-    fs.appendFile('./feedback.json',newEntry, (err, content) => {
-      if(err) throw err;
-    });
-    */
-  }
-  //res.end();
-  res.writeHead(302, { Location: '/feedback' }).end();
 
+    //calls above function that adds feedback response to database
+    run(req.body,true).catch(console.dir);
+    //res.send("Hello " + name + ", Thank you for subcribing. You email is " + email);
+
+  }
+
+  //res.end();
+  res.render('feedbackresponse', { data: { title: "Feedback Response", username: username, feedbackNumber: feedbackEstimate } });
+
+  res.writeHead(302, { Location: '/feedbackresponse' }).end();
 });
+
+function ordinal_suffix_of(i) {
+  var j = i % 10,
+      k = i % 100;
+  if (j == 1 && k != 11) {
+      return i + "st";
+  }
+  if (j == 2 && k != 12) {
+      return i + "nd";
+  }
+  if (j == 3 && k != 13) {
+      return i + "rd";
+  }
+  return i + "th";
+}
 
 module.exports = router;

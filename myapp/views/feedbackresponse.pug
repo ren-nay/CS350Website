@@ -1,0 +1,10 @@
+extends layout 
+
+block scripts 
+    script(scr='/siteScript.js')
+
+block content 
+    h2#thankMsg Thanks for sharing your feedback #{data.username}! 
+    h4#youMsg This is the #{data.feedbackNumber} piece of feedback that I've recieved, so come back soon to see how this site improves!
+    a(href='/feedback')
+        button#reCommentBtn(type='button') Click Here to Comment More!

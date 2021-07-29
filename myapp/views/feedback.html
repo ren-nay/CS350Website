@@ -20,9 +20,7 @@
         <hr>
     </header>
     <div class="endForm">
-        <h2 id="thankMsg"></h2>
-        <h4 id="youMsg"></h4>
-        <form id="commentForm" method="POST" action="/feedback" onsubmit="function createUser(e){e.preventDefault();}">
+        <form id="commentForm" method="POST" action="/feedback">
             <h3>Have some feedback? Let me know!</h3>
             Name:
             <input type="text" id="name" name="name" size="30"><br>
@@ -46,9 +44,8 @@
             <textarea id="comment" name="comment" form="commentForm" placeholder="Write comments here!"></textarea>
             <br><br>
             <input type="reset" value="Reset">
-            <input type="button" value="Send Feedback" onclick="validateForm(this.form, document.getElementById('reCommentBtn'));">
+            <input type="button" value="Send Feedback" onclick="validateForm(this.form);">
         </form>
-        <button type="button" id="reCommentBtn" onclick="revealForm(document.getElementById('commentForm'), document.getElementById('reCommentBtn'));">Click Here to Comment More!</button>
     </div>
     <footer>
         <br>

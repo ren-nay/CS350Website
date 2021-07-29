@@ -36,5 +36,5 @@ block content
             br
             br
             input(type='reset' value='Reset')
-            input(type='button' value='Send Feedback' onclick="validateForm(this.form, document.getElementById('reCommentBtn'));")
+            input(type='button' value='Send Feedback' onclick="validateForm(this.form);")
         button#reCommentBtn(type='button' onclick="revealForm(document.getElementById('commentForm'), document.getElementById('reCommentBtn'));") Click Here to Comment More!
