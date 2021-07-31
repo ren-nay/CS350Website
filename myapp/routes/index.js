@@ -38,9 +38,10 @@ async function run(doc, toAdd) {
           feedbackEstimate = "Thank you for revisiting my site. Your new feedback has been recorded. Come back soon to see how this site improves!"
 
           //modify previous entry
+          updatedComment = "\n\n---\n\n" + doc.comment;
           const result = await feedback.updateOne(
             {email: doc.email},
-            [{ $set: { comment: { $concat: [ "$comment\n----\n", doc.comment ] } } }],
+            [{ $set: { comment: { $concat: [ "$comment", updatedComment ] } } }],
           )
           //edit user statement
         }
