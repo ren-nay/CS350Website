@@ -41,7 +41,7 @@ async function run(doc, toAdd) {
           updatedComment = "\n\n---\n\n" + doc.comment;
           const result = await feedback.updateOne(
             {email: doc.email},
-            [{ $set: { comment: { $concat: [ "$comment", updatedComment ] } } }],
+            { $set: { comment: { $concat: [ "$comment", updatedComment ] } } },
           )
           //edit user statement
         }
